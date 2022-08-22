@@ -1,0 +1,101 @@
+
+// color
+$color-text: #fff;
+$color-gray: #A1B1CB;
+// font
+$font-normal: 16px;
+
+// $color-
+
+// 混合
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-middle {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+@mixin solidBorder($px: '1px', $theme: $color-theme) {
+  border: $px solid $theme
+}
+
+@mixin solidBorderBottom($px: '1px', $theme: $color-theme) {
+  border-bottom: $px solid $theme
+}
+
+@mixin solidBorderRight($px: '1px', $theme: $color-theme) {
+  border-right: $px solid $theme
+}
+
+@mixin solidBorderTop($px: '1px', $theme: $color-theme) {
+  border-top: $px solid $theme
+}
+
+@mixin cardBoxShadow {
+  box-shadow: 0 2px 4px 0 rgb(3 27 78 / 6%);
+}
+
+@mixin cardHoverShadow {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+@mixin ellipsis($line: 1) {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-clamp: $line;
+  -webkit-line-clamp: $line;
+}
+
+@mixin hover-normal {
+  color: $color-text;
+  cursor: pointer;
+}
+
+@mixin scrollbarWrap {
+  /* 设置滚动条的样式 */
+  &:hover {
+    overflow-y: auto;
+    // overflow: overlay; // 滚动条不占容器内容
+  }
+  &::-webkit-scrollbar {
+    z-index: 99;
+    width: 4px;
+  }
+    /* 滚动槽 */
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow:inset006pxrgba(0,0,0,0.3);
+    border-radius: 10px;
+  }
+    /* 滚动条滑块 */
+  &::-webkit-scrollbar-thumb {
+    border-radius:10px;
+    background:rgba(30,32,35,.5);
+    -webkit-box-shadow:inset006pxrgba(0,0,0,0.5);
+  }
+  &::-webkit-scrollbar-thumb:window-inactive {
+    // background:rgba(255,0,0,0.4);
+  }
+}
