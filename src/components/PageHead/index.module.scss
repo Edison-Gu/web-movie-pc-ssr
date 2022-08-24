@@ -24,11 +24,10 @@
 .menu-ul {
   @include flex-middle;
   height: 100%;
-  margin-left: 40px;
   li {
     @include flex-middle;
     height: 100%;
-    margin-right: 45px;
+    margin-left: 70px;
     list-style: none;
     color: $color-gray;
     font-weight: 700;
