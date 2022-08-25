@@ -1,0 +1,19 @@
+.tag-btn-container {
+  @include flex-middle;
+  .btn-item {
+    @include flex-middle;
+    @include flex-center;
+    width: 86px;
+    height: 42px;
+    margin-right: 25px;
+    background: #5C5C5C;
+    border-radius: 30px;
+    &.active {
+      background-color: #E10856;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: #E10856;
+    }
+  }
+}
