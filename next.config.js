@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-20 23:28:14
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-24 23:17:07
+ * @LastEditTime: 2022-08-28 17:43:31
  * @Descripttion: next config
  */
 /** @type {import('next').NextConfig} */
