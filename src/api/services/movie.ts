@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-24 23:18:49
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-24 23:43:51
+ * @LastEditTime: 2022-08-31 23:24:27
  * @Descripttion: 
  */
 import AxiosService from '../instance'
@@ -18,7 +18,18 @@ const fetchMovieList = async (params: any) : Promise<IRes> => {
   return res
 }
 
+/**
+ * 获取首页推荐
+ * @param params 
+ * @returns 
+ */
+const fetchHomeRecommend = async (params: any) : Promise<IRes> => {
+  const res =  await AxiosService.get('homeRecommend', { params })
+  return res
+}
+
 export {
   fetchTagList,
-  fetchMovieList
+  fetchMovieList,
+  fetchHomeRecommend
 }

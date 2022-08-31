@@ -1,0 +1,14 @@
+.movie-list-container {
+  @include flex;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.movie-item-container {
+  width: 100%;
+  margin-left: 40px;
+  &:first-child {
+    margin-left: 0;
+  }
+}
