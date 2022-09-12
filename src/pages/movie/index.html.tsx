@@ -2,11 +2,12 @@
  * @Author: EdisonGu
  * @Date: 2022-08-23 00:24:03
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-24 23:49:01
+ * @LastEditTime: 2022-09-13 00:26:38
  * @Descripttion: 
  */
 import React, { Component } from 'react'
 import type { GetServerSideProps } from 'next'
+import Styles from './index.module.scss'
 import { fetchMovieList } from '@/api'
 interface Iprops {
   list: Array<any>
@@ -23,9 +24,9 @@ class index extends Component<Iprops, Istate> {
   }
   render(): React.ReactNode {
     return (
-      <>
+      <div className={Styles['movie-container']}>
         movie
-      </>
+      </div>
     )
  }
 }

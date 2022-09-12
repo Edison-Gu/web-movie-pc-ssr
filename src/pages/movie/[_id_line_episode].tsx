@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-09-12 15:31:25
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-09-12 23:52:48
+ * @LastEditTime: 2022-09-13 00:01:49
  * @Descripttion: 
  */
 import React, { Component } from 'react'
@@ -57,7 +57,6 @@ class MovieDetail extends Component<Iprops, Istate> {
   }
   render(): React.ReactNode {
     const { movieInfo: { id, name, lines, cover, description, score, year }, activeLine, activeEpisode } = this.props
-    console.log('---activeLine', activeLine, activeEpisode)
     const { isIframe, line, recommendList } = this.state
     return (
       <div className={Styles['movie-info-container']}>
@@ -121,6 +120,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   let movieInfo = {}
   const { code, data } = await fetchMovieInfo({id})
   if (code === 1) {
+    data.lines = data.lines.reverse() // 倒叙，一般后面的线路比较正常
     movieInfo = data
   }
   return { props: { movieInfo, activeLine, activeEpisode } }
