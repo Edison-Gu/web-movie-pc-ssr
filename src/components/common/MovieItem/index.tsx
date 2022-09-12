@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-28 17:12:26
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-09-12 15:49:59
+ * @LastEditTime: 2022-09-12 19:22:14
  * @Descripttion: 
  */
 import React, { Component } from 'react'
@@ -39,4 +39,5 @@ class MovieItem extends Component<Iprops, Istate> {
     )
  }
 }
+
 export default MovieItem

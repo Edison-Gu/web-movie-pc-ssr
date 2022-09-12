@@ -2,11 +2,13 @@
  * @Author: EdisonGu
  * @Date: 2022-08-20 23:28:14
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-09-12 11:57:34
+ * @LastEditTime: 2022-09-12 23:08:55
  * @Descripttion: 
  */
-import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
+import 'antd/dist/antd.css'
+import '../styles/resetAnt.scss'
+import '../styles/globals.scss'
 import HtmlHead from '@/components/HtmlHead'
 import PageHead from '@/components/PageHead'
 import PageFooter from '@/components/PageFooter'

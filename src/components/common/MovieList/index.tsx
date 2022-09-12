@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-28 18:05:47
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-09-12 15:26:51
+ * @LastEditTime: 2022-09-12 23:53:35
  * @Descripttion: 
  */
 import React, { Component } from 'react'
@@ -32,7 +32,7 @@ class MovieList extends Component<Iprops, Istate> {
     }
   }
   transMovie(type: string) {
-    const { list: movieList, homeName } = this.props.movieConfig
+    const { list: movieList } = this.props.movieConfig
     const dom:any = this.movieContentRef.current
     const boxWidth:any = this.movieBoxRef.current?.clientWidth
     const movieItemWidth = 208
@@ -55,13 +55,13 @@ class MovieList extends Component<Iprops, Istate> {
     return homeType === 'newest'
   }
   render(): React.ReactNode {
-    const { list: movieList, tags: tagList, homeName } = this.props.movieConfig
+    const { list: movieList, tags: tagList, homeName, subTitle } = this.props.movieConfig
     const { moveCount } = this.state
     return (
       <div className={Styles['movie-container']}>
         <div className={Styles['list-title-wrap']}>
           <div className={Styles['left']}>
-            <p>{homeName}</p>
+            <p className={subTitle && Styles['sub-title']}>{homeName ? homeName : subTitle}</p>
             {
               this.showMore() && <span>
                 <a href={goRouter({key: PAGE_KEY.MOVIE, type: 'url'})}>探索更多&gt;</a>
