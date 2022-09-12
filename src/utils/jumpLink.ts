@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-23 00:12:18
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-23 00:24:32
+ * @LastEditTime: 2022-09-12 15:50:41
  * @Descripttion: 
  */
 import Router from 'next/router'
@@ -12,34 +12,30 @@ interface PageUrl {
   id?: any,
   key?: string,
   query?: any,
-  complete?: boolean
+  complete?: boolean,
+  type?: string
 }
 
-const goRouter = ({key = PAGE_KEY.HOME, id = '', query = {}}:PageUrl) => {
-  console.log('-----key', key, PAGE_KEY.HOME)
+const goRouter = ({key = PAGE_KEY.HOME, id = '', query = {}, type = 'route'}:PageUrl) => {
+  let routePath = '/'
   switch (key) {
     case PAGE_KEY.HOME:
-      Router.push(`/`)
+      routePath ='/'
       break;
     case PAGE_KEY.MOVIE:
-      Router.push('/movie/index.html')
-        break;
-    case PAGE_KEY.EMOTICON_DETAIL:
-      Router.push(`/emoticon/${id ? id : 'index'}.html`) // 没有传id默认进入表情包页面
-      break
-    case PAGE_KEY.EMOJI_DETAIL:
-      Router.push(id ? `/emoji/${id}.html` : `/emoticon/index.html`) // 没有传id默认进入表情包页面
-      break
-    case PAGE_KEY.SEARCH_KEYWORD:
-      Router.push({
-        pathname: `/search/keyword/${query.keyword}.html`,
-        query
-      })
-      break
+      routePath = '/movie/index.html'
+      break;
+    case PAGE_KEY.MOVIE_DETAIL:
+      routePath = `/movie/${id}.html`
+      break;
     default:
       Router.push(`/`)
       break;
   }
+  if (type === 'route') {
+    Router.push(routePath)
+  }
+  return routePath
 }
 
 export {

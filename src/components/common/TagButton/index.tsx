@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-21 23:48:33
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-25 23:43:48
+ * @LastEditTime: 2022-09-12 14:24:38
  * @Descripttion: 
  */
 import React, { Component } from 'react'
@@ -23,26 +23,19 @@ class TagButton extends Component<Iprops, Istate> {
   constructor(props: Iprops) {
     super(props)
     this.state = {
-      tempList: [],
       activeIndex: 0
     }
-  }
-  async componentDidMount() {
-    const { code, data } = await fetchTagList({})
-    console.log('----data', data)
-    this.setState({
-      tempList: data
-    })
   }
   tagClick(activeIndex: number) {
     this.setState({activeIndex})
   }
   render(): React.ReactNode {
-    const { tempList, activeIndex } = this.state
+    const { activeIndex } = this.state
+    const { tagList } = this.props
     return (
       <div className={Styles['tag-btn-container']}>
         {
-          tempList.map((item: any, index: number) => (
+          tagList?.map((item: any, index: number) => (
             <div
               className={activeIndex === index ? `${Styles.active} ${Styles['btn-item']}` : Styles['btn-item']}
               key={index}

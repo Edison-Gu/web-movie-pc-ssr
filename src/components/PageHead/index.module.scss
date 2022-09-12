@@ -1,11 +1,14 @@
 /* Rectangle 1 */
 .page-container {
+  @include flex-center;
+}
+.page-wrap {
   @include flex-middle;
-  padding: 0 90px;
   // position: absolute;
   // width: 1440px;
-  width: 100%;
+  width: $width-content;
   height: 93px;
+  margin-bottom: 28px;
   font-weight: 700;
   background: linear-gradient(90.01deg, #000000 17.76%, rgba(0, 0, 0, 0.687449) 99.99%);
 }

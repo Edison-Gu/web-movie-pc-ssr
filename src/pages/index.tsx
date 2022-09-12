@@ -2,14 +2,13 @@
  * @Author: EdisonGu
  * @Date: 2022-08-20 23:28:14
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-31 23:39:38
+ * @LastEditTime: 2022-09-12 15:29:32
  * @Descripttion: 
  */
 import type { NextPage } from 'next'
 import type { GetServerSideProps } from 'next'
 import styles from '../styles/Home.module.css'
 import { fetchHomeRecommend } from '@/api'
-import TagButton from '@/components/common/TagButton'
 import MovieList from '@/components/common/MovieList'
 
 interface Iprops {
@@ -25,9 +24,6 @@ const Home: NextPage<Iprops> = (props) => {
           <MovieList movieConfig={item} key={index} />
         ))
       }
-      {/* <MovieList /> */}
-      {/* <TagButton /> */}
-      {/* <MovieItem /> */}
     </div>
   )
 }

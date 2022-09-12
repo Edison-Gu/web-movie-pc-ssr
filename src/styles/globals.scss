@@ -30,3 +30,8 @@ a {
     background: black;
   }
 }
+
+.main-container {
+  width: $width-content;
+  margin: 0 auto;
+}

@@ -1,14 +1,63 @@
 .movie-list-container {
-  @include flex;
-  position: relative;
-  width: 100%;
-  overflow: hidden;
+  
 }
 
-.movie-item-container {
+// title
+.list-title-wrap {
+  margin-bottom: 20px;
+  @include flex-between;
+  .left {
+    p {
+      display: inline-block;
+      margin-right: 18px;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 700;
+    }
+    span {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      color: #04CEFF;
+      cursor: pointer;
+    }
+  }
+  .svg-span {
+    fill: currentColor;
+    color: hsla(0,0%,100%,.2);
+    &:first-child {
+      margin-right: 15px;
+    }
+    &.disabled {
+      color: hsla(0,0%,100%,.1);
+    }
+    &:hover {
+      cursor: pointer;
+      color: hsla(0,0%,100%,.4);
+    }
+  }
+}
+
+// tag
+.list-tags-wrap {
+  margin-bottom: 20px;
+}
+
+// content
+.list-content-wrap {
+  position: relative;
   width: 100%;
-  margin-left: 40px;
-  &:first-child {
-    margin-left: 0;
+  margin-bottom: 54px;
+  overflow: hidden;
+  > div {
+    @include flex;
+    transition: all .5s;
+  }
+  .movie-item {
+    width: 100%;
+    padding-right: 40px;
+    &:last-child {
+      padding-right: 0;
+    }
   }
 }

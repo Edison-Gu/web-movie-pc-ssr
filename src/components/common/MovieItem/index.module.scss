@@ -1,8 +1,8 @@
 .movie-item-container {
   @include flex-column;
   .item-img {
-    width: 168px;
-    height: 237px;
+    width: $width-movie-item;
+    height: $height-movie-item;
     filter: drop-shadow(6px 6px 6px rgba(0, 0, 0, 0.36));
     border-radius: $border-movie-img;
     cursor: pointer;

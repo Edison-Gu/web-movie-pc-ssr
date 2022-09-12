@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-22 23:22:54
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-28 18:07:41
+ * @LastEditTime: 2022-09-12 15:49:06
  * @Descripttion: constant
  */
 import { PagePathname } from '@/types/constants'
@@ -33,7 +33,8 @@ const MENU_LIST:Array<any> = [
 // page path
 const PAGE_PATHNAME = ({key = 'HOME'} : PagePathname) => {
   const pathname = {
-    HOME: '/'
+    HOME: '/',
+    MOVIE_DETAIL: ''
   }[key]
   return pathname
 }
@@ -42,9 +43,7 @@ const PAGE_PATHNAME = ({key = 'HOME'} : PagePathname) => {
 const PAGE_KEY = {
   HOME: 'home', // 主页
   MOVIE: 'movie', // 表情包主页
-  EMOTICON_DETAIL: 'emoticonDetail', // 表情包详情
-  EMOJI_DETAIL: 'emojiDetail',  // 表情详情
-  SEARCH_KEYWORD: 'searchKeyword',  // 搜索主页
+  MOVIE_DETAIL: 'movieDetail',
 }
 
 export {
