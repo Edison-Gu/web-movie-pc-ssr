@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-24 23:17:57
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-24 23:18:30
+ * @LastEditTime: 2022-09-13 00:22:16
  * @Descripttion: 
  */
 import axios from 'axios'
@@ -17,6 +17,9 @@ interface Res {
 const service:any = axios.create({
   baseURL: BASE_DOMAIN,
   timeout: 10000,
+  headers: {
+    whiteList: 'dogMovie'
+  }
 })
 
 service.interceptors.request.use(
