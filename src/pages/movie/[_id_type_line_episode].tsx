@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-09-12 15:31:25
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-09-13 00:01:49
+ * @LastEditTime: 2022-09-13 17:35:08
  * @Descripttion: 
  */
 import React, { Component } from 'react'
@@ -18,6 +18,7 @@ import MovieList from '@/components/common/MovieList'
 
 interface Iprops {
   movieInfo: any,
+  movieType: string,
   activeLine: number,
   activeEpisode: number
 }
@@ -55,8 +56,19 @@ class MovieDetail extends Component<Iprops, Istate> {
     this.setState({ isIframe, line })
     console.log('----lines', line, isIframe)
   }
+  handleLineName(line: any, index: number) {
+    const { movieInfo: { videoType } } = this.props
+    const { name } = line
+    let text = '1080P'
+    if (videoType === 'movie') {
+      name && (text = name)
+    } else {
+      text = `第${index + 1}集`
+    }
+    return text
+  }
   render(): React.ReactNode {
-    const { movieInfo: { id, name, lines, cover, description, score, year }, activeLine, activeEpisode } = this.props
+    const { movieInfo: { id, name, lines, cover, description, score, year, videoType }, activeLine, activeEpisode } = this.props
     const { isIframe, line, recommendList } = this.state
     return (
       <div className={Styles['movie-info-container']}>
@@ -73,12 +85,13 @@ class MovieDetail extends Component<Iprops, Istate> {
             {
               lines.map((item: any, index: number) => (
                 <Tabs.TabPane tab={`线路${index + 1}`} key={index}>
-                  <div>
+                  <div className={Styles['line-btn-box']}>
                     {
                       item.source_list.map((itm:any, idx:number) => (
-                        <a key={idx} href={goRouter({key: PAGE_KEY.MOVIE_DETAIL, id: `${id}_${index}_${idx}`, type: 'url'})}>
+                        <a key={idx} href={goRouter({key: PAGE_KEY.MOVIE_DETAIL, id: `${id}_${videoType}_${index}_${idx}`, type: 'url'})}>
                           <div className={ activeLine === index && activeEpisode === idx ? `${Styles['line-btn']} ${Styles['active']}` : Styles['line-btn']}>
-                            {itm.name ? itm.name : '1080P'}
+                            {/* {itm.name ? itm.name : '1080P'} */}
+                            {this.handleLineName(itm, idx)}
                           </div>
                         </a>
                       ))
@@ -112,18 +125,21 @@ class MovieDetail extends Component<Iprops, Istate> {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const path = context.params._id_line_episode.replace('.html','')
+  const path = context.params._id_type_line_episode.replace('.html','')
   const pathList = path.split('_')
+  console.log('---pathList',path, pathList)
   const id = pathList[0]
-  const activeLine = +pathList[1] || 0
-  const activeEpisode = +pathList[2] || 0
+  const movieType = pathList[1] || 'movie'
+  const activeLine = +pathList[2] || 0
+  const activeEpisode = +pathList[3] || 0
   let movieInfo = {}
-  const { code, data } = await fetchMovieInfo({id})
+  const { code, data } = await fetchMovieInfo({id, type: movieType})
   if (code === 1) {
     data.lines = data.lines.reverse() // 倒叙，一般后面的线路比较正常
+    // movieType === 'movie' && (data.lines = data.lines.reverse()) 
     movieInfo = data
   }
-  return { props: { movieInfo, activeLine, activeEpisode } }
+  return { props: { movieInfo, activeLine, activeEpisode, movieType } }
 }
 
 export default MovieDetail

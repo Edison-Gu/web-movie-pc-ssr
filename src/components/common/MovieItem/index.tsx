@@ -25,10 +25,10 @@ class MovieItem extends Component<Iprops, Istate> {
     }
   }
   render(): React.ReactNode {
-    const { cover, name, year, id } = this.props.movieInfo
+    const { cover, name, year, id, videoType } = this.props.movieInfo
     return (
       <div className={Styles['movie-item-container']}>
-        <a href={goRouter({key: PAGE_KEY.MOVIE_DETAIL, id, type: 'url'})}>
+        <a href={goRouter({key: PAGE_KEY.MOVIE_DETAIL, id: `${id}_${videoType}`, type: 'url'})}>
           <img className={Styles['item-img']} src={cover} alt="" />
         </a>
         <div className={Styles['item-content-box']}>

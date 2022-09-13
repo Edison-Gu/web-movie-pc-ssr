@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-24 23:18:49
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-09-12 23:43:23
+ * @LastEditTime: 2022-09-13 16:21:53
  * @Descripttion: 
  */
 import AxiosService from '../instance'
@@ -19,7 +19,7 @@ const fetchMovieList = async (params: any) : Promise<IRes> => {
 }
 
 const fetchMovieInfo = async (params: any) : Promise<IRes> => {
-  const res =  await AxiosService.get('movieInfo', { params })
+  const res =  await AxiosService.get('movieDetail', { params })
   return res
 }
 
